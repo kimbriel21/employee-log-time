@@ -1,0 +1,15 @@
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\bin\Debug\database_payroll.sdf
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\bin\Debug\employee_timesheet_db.mdf
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\bin\Debug\employee_timesheet_db_log.ldf
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\bin\Debug\employee_log_time.exe.config
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\bin\Debug\employee_log_time.exe
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\bin\Debug\employee_log_time.pdb
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\bin\Debug\Newtonsoft.Json.dll
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\obj\Debug\employee_log_time.csprojResolveAssemblyReference.cache
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\obj\Debug\employee_log_time.Form1.resources
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\obj\Debug\employee_log_time.Form2.resources
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\obj\Debug\employee_log_time.Form3.resources
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\obj\Debug\employee_log_time.Properties.Resources.resources
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\obj\Debug\employee_log_time.csproj.GenerateResource.Cache
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\obj\Debug\employee_log_time.exe
+C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\obj\Debug\employee_log_time.pdb
