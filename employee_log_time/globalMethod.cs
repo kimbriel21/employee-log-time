@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace employee_log_time
 {
-    class data_holder
+    class globalMethod
     {
-        public static string payroll_employee_id {get; set;}
-        public static int oneTimeRunIdleTimer { get; set; }
+        public static int sum(int number1, int number2)
+        {
+            return number1 + number2;
+        }
+
+        
     }
 }

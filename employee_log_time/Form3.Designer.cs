@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_send_data = new System.Windows.Forms.Button();
+            this.btn_log_out = new System.Windows.Forms.Button();
             this.btn_time_in = new System.Windows.Forms.Button();
-            this.btn_time_out = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label_time_spent = new System.Windows.Forms.Label();
@@ -43,13 +44,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.search = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.datePickerTo = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.datePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.timesheet_log_grid_view = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelSearchTimeSpent = new System.Windows.Forms.Label();
+            this.backgroundStatus = new System.Windows.Forms.TableLayoutPanel();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.idle_timer = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -59,7 +65,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timesheet_log_grid_view)).BeginInit();
-            this.tableLayoutPanel5.SuspendLayout();
+            this.backgroundStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -67,7 +73,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.backgroundStatus, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -93,6 +99,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1145, 607);
             this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // panel1
             // 
@@ -109,9 +116,9 @@
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.btn_send_data, 0, 3);
+            this.tableLayoutPanel6.Controls.Add(this.btn_send_data, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.btn_log_out, 0, 3);
             this.tableLayoutPanel6.Controls.Add(this.btn_time_in, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.btn_time_out, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
@@ -129,13 +136,27 @@
             // 
             this.btn_send_data.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_send_data.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_send_data.Location = new System.Drawing.Point(30, 254);
+            this.btn_send_data.Location = new System.Drawing.Point(30, 171);
             this.btn_send_data.Margin = new System.Windows.Forms.Padding(30, 5, 30, 5);
             this.btn_send_data.Name = "btn_send_data";
             this.btn_send_data.Size = new System.Drawing.Size(182, 73);
-            this.btn_send_data.TabIndex = 3;
-            this.btn_send_data.Text = "SEND DATA";
+            this.btn_send_data.TabIndex = 6;
+            this.btn_send_data.Text = "UPLOAD";
             this.btn_send_data.UseVisualStyleBackColor = true;
+            this.btn_send_data.Click += new System.EventHandler(this.send_data_Click);
+            // 
+            // btn_log_out
+            // 
+            this.btn_log_out.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_log_out.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_log_out.Location = new System.Drawing.Point(30, 254);
+            this.btn_log_out.Margin = new System.Windows.Forms.Padding(30, 5, 30, 5);
+            this.btn_log_out.Name = "btn_log_out";
+            this.btn_log_out.Size = new System.Drawing.Size(182, 73);
+            this.btn_log_out.TabIndex = 5;
+            this.btn_log_out.Text = "LOG OUT";
+            this.btn_log_out.UseVisualStyleBackColor = true;
+            this.btn_log_out.Click += new System.EventHandler(this.btn_log_out_Click);
             // 
             // btn_time_in
             // 
@@ -146,22 +167,9 @@
             this.btn_time_in.Name = "btn_time_in";
             this.btn_time_in.Size = new System.Drawing.Size(182, 73);
             this.btn_time_in.TabIndex = 0;
-            this.btn_time_in.Text = "TIME IN";
+            this.btn_time_in.Text = "START TIME";
             this.btn_time_in.UseVisualStyleBackColor = true;
             this.btn_time_in.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btn_time_out
-            // 
-            this.btn_time_out.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_time_out.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_time_out.Location = new System.Drawing.Point(30, 171);
-            this.btn_time_out.Margin = new System.Windows.Forms.Padding(30, 5, 30, 5);
-            this.btn_time_out.Name = "btn_time_out";
-            this.btn_time_out.Size = new System.Drawing.Size(182, 73);
-            this.btn_time_out.TabIndex = 1;
-            this.btn_time_out.Text = "TIME OUT";
-            this.btn_time_out.UseVisualStyleBackColor = true;
-            this.btn_time_out.Click += new System.EventHandler(this.btn_time_out_Click);
             // 
             // tableLayoutPanel7
             // 
@@ -209,14 +217,15 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.timesheet_log_grid_view, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.labelSearchTimeSpent, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(319, 25);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(25);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(801, 557);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
@@ -252,9 +261,9 @@
             // 
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Controls.Add(this.search);
-            this.flowLayoutPanel1.Controls.Add(this.dateTimePicker1);
+            this.flowLayoutPanel1.Controls.Add(this.datePickerTo);
             this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Controls.Add(this.dateTimePicker2);
+            this.flowLayoutPanel1.Controls.Add(this.datePickerFrom);
             this.flowLayoutPanel1.Controls.Add(this.label2);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -279,17 +288,17 @@
             this.search.UseVisualStyleBackColor = false;
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
-            // dateTimePicker1
+            // datePickerTo
             // 
-            this.dateTimePicker1.CustomFormat = "MM/dd/yyyy";
-            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(436, 12);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(155, 31);
-            this.dateTimePicker1.TabIndex = 8;
+            this.datePickerTo.CustomFormat = "MM/dd/yyyy";
+            this.datePickerTo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datePickerTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePickerTo.Location = new System.Drawing.Point(436, 12);
+            this.datePickerTo.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
+            this.datePickerTo.Name = "datePickerTo";
+            this.datePickerTo.Size = new System.Drawing.Size(155, 31);
+            this.datePickerTo.TabIndex = 8;
             // 
             // label3
             // 
@@ -302,17 +311,17 @@
             this.label3.Text = "TO :";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dateTimePicker2
+            // datePickerFrom
             // 
-            this.dateTimePicker2.CustomFormat = "MM/dd/yyyy";
-            this.dateTimePicker2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(194, 12);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(170, 31);
-            this.dateTimePicker2.TabIndex = 9;
+            this.datePickerFrom.CustomFormat = "MM/dd/yyyy";
+            this.datePickerFrom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datePickerFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePickerFrom.Location = new System.Drawing.Point(194, 12);
+            this.datePickerFrom.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
+            this.datePickerFrom.Name = "datePickerFrom";
+            this.datePickerFrom.Size = new System.Drawing.Size(170, 31);
+            this.datePickerFrom.TabIndex = 9;
             // 
             // label2
             // 
@@ -327,40 +336,68 @@
             // 
             // timesheet_log_grid_view
             // 
+            this.timesheet_log_grid_view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.timesheet_log_grid_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.timesheet_log_grid_view.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timesheet_log_grid_view.Location = new System.Drawing.Point(3, 58);
+            this.timesheet_log_grid_view.Location = new System.Drawing.Point(0, 55);
+            this.timesheet_log_grid_view.Margin = new System.Windows.Forms.Padding(0);
             this.timesheet_log_grid_view.Name = "timesheet_log_grid_view";
-            this.timesheet_log_grid_view.Size = new System.Drawing.Size(795, 496);
+            this.timesheet_log_grid_view.Size = new System.Drawing.Size(801, 456);
             this.timesheet_log_grid_view.TabIndex = 1;
             // 
-            // tableLayoutPanel5
+            // labelSearchTimeSpent
             // 
-            this.tableLayoutPanel5.BackColor = System.Drawing.Color.Red;
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1145, 31);
-            this.tableLayoutPanel5.TabIndex = 1;
+            this.labelSearchTimeSpent.AutoSize = true;
+            this.labelSearchTimeSpent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelSearchTimeSpent.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSearchTimeSpent.Location = new System.Drawing.Point(0, 511);
+            this.labelSearchTimeSpent.Margin = new System.Windows.Forms.Padding(0);
+            this.labelSearchTimeSpent.Name = "labelSearchTimeSpent";
+            this.labelSearchTimeSpent.Size = new System.Drawing.Size(801, 46);
+            this.labelSearchTimeSpent.TabIndex = 2;
+            this.labelSearchTimeSpent.Text = "00:00 HOUR/S";
+            this.labelSearchTimeSpent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label4
+            // backgroundStatus
             // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(1139, 31);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "TIME OUT";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.backgroundStatus.BackColor = System.Drawing.Color.Red;
+            this.backgroundStatus.ColumnCount = 1;
+            this.backgroundStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.backgroundStatus.Controls.Add(this.statusLabel, 0, 0);
+            this.backgroundStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.backgroundStatus.Location = new System.Drawing.Point(0, 0);
+            this.backgroundStatus.Margin = new System.Windows.Forms.Padding(0);
+            this.backgroundStatus.Name = "backgroundStatus";
+            this.backgroundStatus.RowCount = 1;
+            this.backgroundStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.backgroundStatus.Size = new System.Drawing.Size(1145, 31);
+            this.backgroundStatus.TabIndex = 1;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.statusLabel.Location = new System.Drawing.Point(3, 0);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(1139, 31);
+            this.statusLabel.TabIndex = 0;
+            this.statusLabel.Text = "TIME OUT";
+            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // idle_timer
+            // 
+            this.idle_timer.Tick += new System.EventHandler(this.idle_timer_Tick);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // Form3
             // 
@@ -368,8 +405,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 688);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form3";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
             this.Load += new System.EventHandler(this.Form3_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -379,11 +419,12 @@
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.timesheet_log_grid_view)).EndInit();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
+            this.backgroundStatus.ResumeLayout(false);
+            this.backgroundStatus.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -399,18 +440,23 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button search;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker datePickerTo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker datePickerFrom;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TableLayoutPanel backgroundStatus;
+        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btn_time_in;
-        private System.Windows.Forms.Button btn_time_out;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label_time_spent;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btn_send_data;
+        private System.Windows.Forms.Button btn_log_out;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Timer idle_timer;
+        private System.Windows.Forms.Label labelSearchTimeSpent;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

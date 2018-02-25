@@ -27,13 +27,15 @@ namespace employee_log_time
 
         private void log_in_Click(object sender, EventArgs e)
         {
+            //email.Text = "kimbriel_oraya@yahoo.com";
+            //password.Text = "340561497-0000";
             var json = JsonConvert.SerializeObject("");//, Formatting.Indented
             send_data();
         }
 
         private void register_Click(object sender, EventArgs e)
         {
-
+            System.Environment.Exit(1);
         }
         public void send_data()
         {
