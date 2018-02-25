@@ -273,7 +273,7 @@ namespace employee_log_time
                 var postData = "payroll_employee_id=" + data_holder.payroll_employee_id;
                 byte[] data = encoding.GetBytes(postData);
 
-                WebRequest request = (HttpWebRequest)WebRequest.Create("http://digimahouse.test/member/payroll/biometrics/get_time");
+                WebRequest request = (HttpWebRequest)WebRequest.Create("http://payrolldigima.com/member/payroll/biometrics/get_time");
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
                 request.ContentLength = data.Length;
@@ -496,7 +496,7 @@ namespace employee_log_time
                 postData += "&payroll_employee_id=" + data_holder.payroll_employee_id;
                 byte[] data = encoding.GetBytes(postData);
 
-                WebRequest request = (HttpWebRequest)WebRequest.Create("http://digimahouse.test/member/payroll/biometrics/flexi_data_importation");
+                WebRequest request = (HttpWebRequest)WebRequest.Create("http://payrolldigima.com/member/payroll/biometrics/flexi_data_importation");
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
                 request.ContentLength = data.Length;

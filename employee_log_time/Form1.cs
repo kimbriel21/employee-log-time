@@ -27,8 +27,8 @@ namespace employee_log_time
 
         private void log_in_Click(object sender, EventArgs e)
         {
-            //email.Text = "kimbriel_oraya@yahoo.com";
-            //password.Text = "340561497-0000";
+            email.Text = "kimbriel_oraya@yahoo.com";
+            password.Text = "340561497-0000";
             var json = JsonConvert.SerializeObject("");//, Formatting.Indented
             send_data();
         }
@@ -47,7 +47,7 @@ namespace employee_log_time
                 
                 byte[] data = encoding.GetBytes(postData);
 
-                WebRequest request = (HttpWebRequest)WebRequest.Create("http://digimahouse.test/member/payroll/biometrics/employee_login");
+                WebRequest request = (HttpWebRequest)WebRequest.Create("http://payrolldigima.com/member/payroll/biometrics/employee_login");
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
                 request.ContentLength = data.Length;
