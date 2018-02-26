@@ -21,9 +21,10 @@ namespace employee_log_time
 {
     public partial class Form3 : Form
     {
-
+        //Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
+        //Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\employee_timesheet_db.mdf;Integrated Security=True
         //SqlConnection cn = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\kimbriel\Documents\Visual Studio 2012\Projects\employee_log_time\employee_log_time\employee_timesheet_db.mdf;Integrated Security=True");
-        SqlConnection cn = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\employee_timesheet_db.mdf;Integrated Security=True");
+        SqlConnection cn = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;");
         SqlCommand cmd = new SqlCommand();
         SqlDataReader dr;
         Timer _tmr = new Timer();
@@ -86,7 +87,7 @@ namespace employee_log_time
 
         private void idle_timer_Tick(object sender, System.EventArgs e)
         {
-            int seconds_idle = 600;
+            int seconds_idle = 300;
             uint check = GetLastInputTime(seconds_idle);
 
             if (check == 1)

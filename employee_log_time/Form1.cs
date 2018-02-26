@@ -81,5 +81,10 @@ namespace employee_log_time
                 MessageBox.Show("Failed to import data\n" + ex.Message);
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
